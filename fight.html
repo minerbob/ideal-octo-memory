@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>gamePlay</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        img
+        {
+            width: 100px;
+            height: 150px;
+
+        }
+        playerOpponent
+        {
+            float: left;
+        }
+        cardsOpponent
+        {
+            float: left;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+<div id = "opponent">
+    <div id="playerOpponent"></div>
+    <div id="cardsOpponent"></div>
+</div>
+
+<div id = "playGround">
+    <div id="userFightCard"></div>
+    <div id="opponentFightCard"></div>
+</div>
+
+<div id = "player">
+    <div id="playerUser"></div>
+    <div id="cardsUser"></div>
+</div>
+
+<div id="chat">
+    <div id="chatLog"></div>
+    <div id="chatInput">
+        <input type="text" value="say something">
+        <button>send</button>
+    </div>
+</div>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-storage.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyCiVZ3-BTnEYzYViVRIkpyTr85YVXjfrvI",
+        authDomain: "silver-pad-134523.firebaseapp.com",
+        databaseURL: "https://silver-pad-134523.firebaseio.com",
+        projectId: "silver-pad-134523",
+        storageBucket: "silver-pad-134523.appspot.com",
+        messagingSenderId: "800942154333",
+        appId: "1:800942154333:web:c6005be8679bcc56"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    function displayOpponent() {
+        var h6 = $("<h6>");
+        h6.text("John Doe");
+        $("#playerOpponent").append(h6);
+
+
+        var storageRef = firebase.storage().ref();
+        var spaceRef = storageRef.child('pictures/d10.jpg');
+        storageRef.child('pictures/d10.jpg').getDownloadURL().then(function (url) {
+            var myImg = $("<img>");
+            myImg.attr("src", url);
+            $("#playerOpponent").append(myImg);
+        }).catch(function (error) {
+            // Handle any errors
+        });
+    }
+    function fight()
+    {
+        var storageRef = firebase.storage().ref();
+        var spaceRef = storageRef.child('pictures/d12.jpg');
+        storageRef.child('pictures/d10.jpg').getDownloadURL().then(function (url) {
+            var myImg = $("<img>");
+            myImg.attr("src", url);
+            $("#playerOpponent").append(myImg);
+        }).catch(function (error) {
+            // Handle any errors
+        });
+    }
+    function displayUser()
+    {
+        var h6 = $("<h6>");
+        h6.text("Doe John");
+        $("#playerUser").append(h6);
+
+
+        var storageRef = firebase.storage().ref();
+        var spaceRef = storageRef.child('pictures/d10.jpg');
+        storageRef.child('pictures/d10.jpg').getDownloadURL().then(function (url) {
+            var myImg = $("<img>");
+            myImg.attr("src", url);
+            $("#playerUser").append(myImg);
+        }).catch(function (error) {
+            // Handle any errors
+        });
+    }
+    function showimage() {
+        // Create a reference with an initial file path and name
+        var storageRef = firebase.storage().ref();
+        for (var i = 0; i <5; i ++) {
+            var spaceRef = storageRef.child('pictures/1.png');
+            storageRef.child('pictures/1.png').getDownloadURL().then(function (url) {
+                var myImg = $("<img>");
+                var img = $("<img>");
+                myImg.attr("src", url);
+                img.attr("src", url);
+                $("#cardsOpponent").append(myImg);
+                $("#cardsUser").append(img);
+
+            }).catch(function (error) {
+                // Handle any errors
+            });
+        }
+    }
+    displayOpponent();
+    displayUser();
+    showimage();
+</script>
+</body>
+</html>
