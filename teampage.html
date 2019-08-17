@@ -66,7 +66,7 @@
             </div>
         </div>
     </div>
-    <a href="fight.html" type="button" class="btn btn-info p-5 mr-5 col-4">Fight</a>
+    <button id = "submit" type="button" class="btn btn-info p-5 mr-5 col-4">Fight</buttton>
 
 
 </body>
@@ -115,6 +115,16 @@
         }
 
     });
+    $("#submit").on("click", function () {
+    if (deck.length === 5) {
+     localStorage.setItem("playerTeam", JSON.stringify(deck));
+     location.href="fight.html";
+    }
+    else {
+        alert("add more cards to your hand")
+    }
+
+    });
 
 
 </script>
@@ -123,3 +133,10 @@
 </html>
 
 </html>
+
+
+  <!--
+var names = [];
+names[0] = prompt("New member name?");
+localStorage.setItem("names", JSON.stringify(names));
+Link CSS-->

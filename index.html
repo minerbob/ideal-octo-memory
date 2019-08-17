@@ -64,7 +64,7 @@
                     </div> -->
                     <div class="row">
                         <div class="offset-4 col-8">
-                                <a href="gameplay.html" type="submit" class="btn btn-primary mx-auto" id = "login">Log in</a>
+                            <butoon type="submit" class="btn btn-primary mx-auto" id="login">Log in</butoon>
                             <button type="submit" class="btn btn-secondary mx-auto">Sign-up Now!</button>
                         </div>
                     </div>
@@ -77,10 +77,18 @@
 </body>
 
 <script>
-    //$("#login").on("click", function () {
-    //    alert("I ran");
-    //    window.location.href='gameplay.html';
-    //});
+
+
+
+
+
+    $("#login").on("click", function () {
+        // Capture user inputs and store them into variables
+        var email = $("#exampleInputEmail1").val().trim();
+        localStorage.setItem("playerUserName", JSON.stringify(email));
+        location.href="gameplay.html";
+
+    });
 
 
 
