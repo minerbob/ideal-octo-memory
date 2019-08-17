@@ -7,6 +7,10 @@
 <!--<![endif]-->
 
 <head>
+    
+     <!--Link CSS Reset-->
+    <link rel="stylesheet" type="text/css" href=".\assets\css\reset.css">
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Project 1 - Team Page</title>
@@ -25,13 +29,97 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
 
-    <!--Link CSS and Reset-->
-    <link rel="stylesheet" type="text/css" href=".\assets\css\reset.css">
+    <!--Link CSS-->
     <link rel="stylesheet" type="text/css" href=".\assets\css\styles.css">
 
     <!--javascript-->
     <script type="text/javascript" src=".\assets\javascript\javascript.js"></script>
 </head>
+<script type="text/javascript" src=".\assets\javascript\javascript.js"></script>
+</head>
 
+<body class="text-center">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="jumbotron">
+                    <h1>Choose Your Team</h1>
+                    <p>Click on cards you want.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="deckContainer">
+        <div class="row">
+            <div class="col-sm-12">
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" id="playerHand">
+            </div>
+        </div>
+    </div>
+    <a href="fight.html" type="button" class="btn btn-info p-5 mr-5 col-4">Fight</a>
+
+
+</body>
+
+<script>
+
+    var namesList = ["Gyarados", "Magikarp", "Lugia", "Mew", "Mewtwo", "Gengar", "Eevee", "Jigglypuff", "Squirtle", "Charizard", "Pikachu"];
+    var deck = [];
+
+    function createDeck(name) {
+        var card = $("<img>");
+        $(card).addClass("d-inline-block")
+        $(card).addClass("card");
+        $(card).attr("card-name", name);
+        $(card).attr("location", "deck");
+        $(card).attr("src", "https://via.placeholder.com/100");
+        $("#deckContainer").append(card);
+    }
+
+    for (var name in namesList) {
+        createDeck(namesList[name]);
+    }
+
+
+    $(".card").on("click", function () {
+        console.log("I Ran");
+
+        if ($(this).attr("location") === "deck") {
+            if (deck.length < 5) {
+                $("#playerHand").append(this);
+                $(this).attr("location", "hand");
+                deck.push($(this).attr("card-name"));
+                console.log(deck);
+            }
+            else {
+                alert("to many cards in deck");
+            }
+
+        }
+        else {
+
+            $("#deckContainer").append(this);
+            $(this).attr("location", "deck");
+            deck.splice($.inArray($(this).attr("card-name"), deck), 1);
+            console.log(deck);
+        }
+
+    });
+
+
+</script>
+
+
+</html>
 
 </html>
