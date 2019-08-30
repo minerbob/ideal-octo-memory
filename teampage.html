@@ -72,11 +72,29 @@
 </body>
 
 <script>
-
-    var namesList = ["Gyarados", "Magikarp", "Lugia", "Mew", "Mewtwo", "Gengar", "Eevee", "Jigglypuff", "Squirtle", "Charizard", "Pikachu"];
+    var digmonNamesList = ["Agumon", "Gabumon", "Biyomon", "Tentomon", "Palmon", "Gomamon","Patamon", "Elecmon", "Gazimon","Otamamon", "Gotsumon"];
+    var pokemonNamesList = ["Gyarados", "Magikarp", "Lugia", "Mew", "Mewtwo", "Gengar", "Eevee", "Jigglypuff", "Squirtle", "Charizard", "Pikachu"];
+    var namesList = [];
+    namesList = $.merge($.merge([], digmonNamesList), pokemonNamesList);
     var deck = [];
 
+
+    function getImageDigimon(name) {
+    //https://digimon-api.herokuapp.com/
+    
+    var queryURL = "https://digimon-api.herokuapp.com/api/digimon/name/" + name;
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            var results = response[0]["img"];    
+            $("#" + name).attr("src", results );       
+        });
+        
+    }
+
     function getImagePokemon(name) {
+        //https://pokeapi.co/
         var queryURL = "https://pokeapi.co/api/v2/pokemon/" + name + "/";
         $.ajax({
             url: queryURL,
@@ -84,14 +102,14 @@
         }).then(function (response) {
             var results = response.sprites["front_default"];
             $("#" + name).attr("src", results );
-            return results;          
+         
         });
         
     } 
 
     function createDeck(name) {
-        var card = $("<img>");
-        var cardHolder = $("<div>");
+        var card = $("<img height='100' width='100'>");
+        var cardHolder = $("<div>"); 
         $(cardHolder).addClass("d-inline-block")
         $(card).addClass("d-block")
         $(cardHolder).addClass("cardHolder")
@@ -99,7 +117,12 @@
         $(cardHolder).attr("location", "deck");
         $(card).attr("src", "https://via.placeholder.com/100");
         $(card).attr('id', name.toLowerCase());
+        if(jQuery.inArray(name, pokemonNamesList) !== -1){
         getImagePokemon(name.toLowerCase());
+        }
+        if(jQuery.inArray(name, digmonNamesList) !== -1){
+        getImageDigimon(name.toLowerCase());
+        }
         $(cardHolder).append(card);
         $(cardHolder).append(name);
         $("#deckContainer").append(cardHolder).append(" ");
