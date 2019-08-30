@@ -7,6 +7,10 @@
 <!--<![endif]-->
 
 <head>
+
+    <!--Link CSS Reset-->
+    <link rel="stylesheet" type="text/css" href=".\assets\css\reset.css">
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Project 1 - Team Page</title>
@@ -21,17 +25,159 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
         </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-        </script>
-
-    <!--Link CSS and Reset-->
-    <link rel="stylesheet" type="text/css" href=".\assets\css\reset.css">
+    <!--Link CSS-->
     <link rel="stylesheet" type="text/css" href=".\assets\css\styles.css">
 
     <!--javascript-->
     <script type="text/javascript" src=".\assets\javascript\javascript.js"></script>
+
+    <!--Ajax Library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
+<script type="text/javascript" src=".\assets\javascript\javascript.js"></script>
+</head>
+
+<body class="text-center">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="jumbotron">
+                    <h1>Choose Your Team</h1>
+                    <p>Click on cards you want.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="deckContainer">
+        <div class="row">
+            <div class="col-sm-12">
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" id="playerHand">
+            </div>
+        </div>
+    </div>
+    <button id="submit" type="button" class="btn btn-info p-5 mr-5 col-4">Fight</buttton>
+
+
+</body>
+
+<script>
+    var digmonNamesList = ["Agumon", "Gabumon", "Biyomon", "Tentomon", "Palmon", "Gomamon","Patamon", "Elecmon", "Gazimon","Otamamon", "Gotsumon"];
+    var pokemonNamesList = ["Gyarados", "Magikarp", "Lugia", "Mew", "Mewtwo", "Gengar", "Eevee", "Jigglypuff", "Squirtle", "Charizard", "Pikachu"];
+    var namesList = [];
+    namesList = $.merge($.merge([], digmonNamesList), pokemonNamesList);
+    var deck = [];
+
+
+    function getImageDigimon(name) {
+    //https://digimon-api.herokuapp.com/
+    
+    var queryURL = "https://digimon-api.herokuapp.com/api/digimon/name/" + name;
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            var results = response[0]["img"];    
+            $("#" + name).attr("src", results );       
+        });
+        
+    }
+
+    function getImagePokemon(name) {
+        //https://pokeapi.co/
+        var queryURL = "https://pokeapi.co/api/v2/pokemon/" + name + "/";
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            var results = response.sprites["front_default"];
+            $("#" + name).attr("src", results );
+         
+        });
+        
+    } 
+
+    function createDeck(name) {
+        var card = $("<img height='100' width='100'>");
+        var cardHolder = $("<div>"); 
+        $(cardHolder).addClass("d-inline-block")
+        $(card).addClass("d-block")
+        $(cardHolder).addClass("cardHolder")
+        $(cardHolder).attr("card-name", name);
+        $(cardHolder).attr("location", "deck");
+        $(card).attr("src", "https://via.placeholder.com/100");
+        $(card).attr('id', name.toLowerCase());
+        if(jQuery.inArray(name, pokemonNamesList) !== -1){
+        getImagePokemon(name.toLowerCase());
+        }
+        if(jQuery.inArray(name, digmonNamesList) !== -1){
+        getImageDigimon(name.toLowerCase());
+        }
+        $(cardHolder).append(card);
+        $(cardHolder).append(name);
+        $("#deckContainer").append(cardHolder).append(" ");
+    }
+
+    for (var name in namesList) {
+        createDeck(namesList[name]);
+    }
+
+
+    $(".cardHolder").on("click", function () {
+
+        if ($(this).attr("location") === "deck") {
+            if (deck.length < 5) {
+                $("#playerHand").append(this).append(" ");
+                $(this).attr("location", "hand");
+                deck.push($(this).attr("card-name"));
+                console.log(deck);
+               }
+            else {
+                alert("to many cards in deck");
+            }
+
+        }
+        else {
+
+            $("#deckContainer").append(this);
+            $(this).attr("location", "deck");
+            deck.splice($.inArray($(this).attr("card-name"), deck), 1);
+            console.log(deck);
+        }
+
+    });
+    $("#submit").on("click", function () {
+        if (deck.length === 5) {
+            localStorage.setItem("playerTeam", JSON.stringify(deck));
+            location.href = "fight.html";
+        }
+        else {
+            alert("add more cards to your hand")
+        }
+
+    });
+
+
+</script>
 
 
 </html>
+
+</html>
+
+
+<!--
+var names = [];
+names[0] = prompt("New member name?");
+localStorage.setItem("names", JSON.stringify(names));
+Link CSS-->
