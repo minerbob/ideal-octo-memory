@@ -1,4 +1,3 @@
-$(document).ready(function () {
     var character = function(id, name, pwr, hp, source){
         this.id = id;
         this.name = name;
@@ -9,6 +8,26 @@ $(document).ready(function () {
     var players=[];
     var heroChoose;
     var enemyCount;
+
+    function ifClicked(event, list)
+    {
+        var clickedElementSRC = event.target.src;
+        var clickedElementALT = event.target.alt;
+        console.log(event.target.hidden);
+
+        //var target = $("#"+clickedElement);
+        //console.log("#"+clickedElement);
+        if (clickedElementALT === "myCard")
+        {
+            event.target.hidden = true;
+            $("#userFightCard").attr('src', clickedElementSRC);
+        }
+        else if (clickedElementALT == "theirCard")
+        {
+            event.target.hidden = true;
+            $("#opponentFightCard").attr('src', clickedElementSRC);
+        }
+    }
     function fight()
     {
         $("#first").hide();
@@ -59,17 +78,6 @@ $(document).ready(function () {
             fight();
         }
     }
-    function ifClicked()
-    {
-        var clickedElement = $(this).id;
-        console.log(clickedElement);
-
-        var target = $("#"+clickedElement);
-        var clone = target;
-        $("#userFightCard").append(clone);
-
-        $(target).hide();
-    }
     function attack()
     {
         players[0].hp = players[0].hp-players[1].pwr;
@@ -98,7 +106,7 @@ $(document).ready(function () {
         }
         console.log(enemyCount);
     }
-        $("img").on("click", ifClicked);
+        //$("img").on("click", ifClicked);
         //$("#attack").on("click", function(){
         //    attack();
         //});
@@ -106,4 +114,3 @@ $(document).ready(function () {
         //$("#reset").on("click", function(){
         //   location.reload();
         //})
-});
