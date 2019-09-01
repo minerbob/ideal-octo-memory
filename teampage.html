@@ -16,6 +16,7 @@
     <title>Project 1 - Team Page</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="">
@@ -25,17 +26,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
         </script>
-    <!--Link CSS-->
-    <link rel="stylesheet" type="text/css" href=".\assets\css\styles.css">
+    <!--Ajax Library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src=".\assets\javascript\javascript.js"></script>
 
     <!--javascript-->
     <script type="text/javascript" src=".\assets\javascript\javascript.js"></script>
 
-    <!--Ajax Library-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-</head>
-<script type="text/javascript" src=".\assets\javascript\javascript.js"></script>
+
+
+    <!--Link CSS-->
+    <link rel="stylesheet" type="text/css" href=".\assets\css\styles.css">
+
+
+
+
 </head>
 
 <body class="text-center">
@@ -45,34 +57,106 @@
             <div class="col-sm-12">
                 <div class="jumbotron">
                     <h1>Choose Your Team</h1>
-                    <p>Click on cards you want.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container" id="deckContainer">
-        <div class="row">
-            <div class="col-sm-12">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel-group">
+                <div class="panel panel-primary">
+                    <div class="panel-heading text-left">Available Characters</div>
+                    <div class="panel-body" id="deckContainer">
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <!---->
+
     <br>
     <br>
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-12" id="playerHand">
+            <div class="col-sm-12">
+                <div class="panel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading text-left">Cards in your Hand</div>
+                        <div class="panel-body" id="playerHand">
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <button id="submit" type="button" class="btn btn-info p-5 mr-5 col-4">Fight</buttton>
+    <!----->
+    <!--Modal Start-->
+    <div class="container">
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-lg" id="submit">Battle!</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Your need more cards</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please select a total of 5 cards</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!--Modal End-->
+
+
+    <!--Modal Start-->
+    <div class="container">
+        <!-- Modal -->
+        <div class="modal fade" id="myModal2" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">To many cards</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>You can only have 5 cards</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!--Modal End-->
 
 
 </body>
 
 <script>
-    var digmonNamesList = ["Agumon", "Gabumon", "Biyomon", "Tentomon", "Palmon", "Gomamon","Patamon", "Elecmon", "Gazimon","Otamamon", "Gotsumon"];
+    var digmonNamesList = ["Agumon", "Gabumon", "Biyomon", "Tentomon", "Palmon", "Gomamon", "Patamon", "Elecmon", "Gazimon", "Otamamon", "Gotsumon"];
     var pokemonNamesList = ["Gyarados", "Magikarp", "Lugia", "Mew", "Mewtwo", "Gengar", "Eevee", "Jigglypuff", "Squirtle", "Charizard", "Pikachu"];
     var namesList = [];
     namesList = $.merge($.merge([], digmonNamesList), pokemonNamesList);
@@ -80,17 +164,17 @@
 
 
     function getImageDigimon(name) {
-    //https://digimon-api.herokuapp.com/
-    
-    var queryURL = "https://digimon-api.herokuapp.com/api/digimon/name/" + name;
+        //https://digimon-api.herokuapp.com/
+
+        var queryURL = "https://digimon-api.herokuapp.com/api/digimon/name/" + name;
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            var results = response[0]["img"];    
-            $("#" + name).attr("src", results );       
+            var results = response[0]["img"];
+            $("#" + name).attr("src", results);
         });
-        
+
     }
 
     function getImagePokemon(name) {
@@ -101,15 +185,15 @@
             method: "GET"
         }).then(function (response) {
             var results = response.sprites["front_default"];
-            $("#" + name).attr("src", results );
-         
+            $("#" + name).attr("src", results);
+
         });
-        
-    } 
+
+    }
 
     function createDeck(name) {
         var card = $("<img height='100' width='100'>");
-        var cardHolder = $("<div>"); 
+        var cardHolder = $("<div>");
         $(cardHolder).addClass("d-inline-block")
         $(card).addClass("d-block")
         $(cardHolder).addClass("cardHolder")
@@ -117,11 +201,11 @@
         $(cardHolder).attr("location", "deck");
         $(card).attr("src", "https://via.placeholder.com/100");
         $(card).attr('id', name.toLowerCase());
-        if(jQuery.inArray(name, pokemonNamesList) !== -1){
-        getImagePokemon(name.toLowerCase());
+        if (jQuery.inArray(name, pokemonNamesList) !== -1) {
+            getImagePokemon(name.toLowerCase());
         }
-        if(jQuery.inArray(name, digmonNamesList) !== -1){
-        getImageDigimon(name.toLowerCase());
+        if (jQuery.inArray(name, digmonNamesList) !== -1) {
+            getImageDigimon(name.toLowerCase());
         }
         $(cardHolder).append(card);
         $(cardHolder).append(name);
@@ -141,9 +225,9 @@
                 $(this).attr("location", "hand");
                 deck.push($(this).attr("card-name"));
                 console.log(deck);
-               }
+            }
             else {
-                alert("to many cards in deck");
+                $("#myModal2").modal();
             }
 
         }
@@ -162,22 +246,14 @@
             location.href = "fight.html";
         }
         else {
-            alert("add more cards to your hand")
+            $("#myModal").modal();
         }
 
     });
 
 
+
+
 </script>
 
-
 </html>
-
-</html>
-
-
-<!--
-var names = [];
-names[0] = prompt("New member name?");
-localStorage.setItem("names", JSON.stringify(names));
-Link CSS-->
