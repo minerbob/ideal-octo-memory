@@ -30,7 +30,7 @@
 <body>
     <div class="jumbotron jumbotron-fluid">
         <div class="container mb-5">
-            <h1 class="display-4 float-left">Project 1</h1>
+            <h1 class="display-4 float-left">Fight Club</h1>
             <h5 class="lead float-right align-middle">Welcome: *Username*</h5>
         </div>
     </div>
@@ -38,20 +38,67 @@
     <div class="container">
         <div class="row">
             <div class="offset-3 col-8">
-                <h2 class="my-5">What gameplay do you choose?</h2>
+                <h2 class="my-5 mx-auto" style="width: 500px;">Choose your gameplay</h2>
                 <div class="row">
-                    <button type="button" class="btn btn-info p-5 mr-5 col-4">Solo</button>
-                    <button type="button" class="btn btn-dark p-5 ml-5 col-4">Invite other user</button>
+                    <a href="teampage.html" type="button" class="btn btn-info p-5 mr-5 col-4 hover">Solo <span
+                            class="hovertext">single
+                            player vs cpu</span></a>
+                    <button type="button" class="btn btn-info p-5 ml-5 col-4 hover">Multiplayer <span class="hovertext">
+                            player vs player</span></button>
                 </div>
             </div>
         </div>
     </div>
 
-
-
-
-
-
-
 </body>
+
+<style>
+    body {
+        background: url("https://assets.vg247.com/current//2017/05/Pikachu-2.png") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .jumbotron {
+        opacity: .4;
+        height: 25%;
+        padding: 5%;
+    }
+
+    .btn {
+        opacity: .85;
+        color: black;
+        border-radius: 80%;
+    }
+
+    .hover {
+        position: relative;
+        display: inline-block;
+    }
+
+    .hover .hovertext {
+        visibility: hidden;
+        width: 220px;
+        padding: 5px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 1;
+        bottom: 80%;
+        left: 50%;
+        margin-left: -60px;
+        opacity: 0;
+        transition: opacity 1.5s;
+    }
+
+    .hover:hover .hovertext {
+        visibility: visible;
+        opacity: 1;
+    }
+</style>
+
 </html>
