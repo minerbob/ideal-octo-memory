@@ -1,37 +1,121 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js">
-<!--<![endif]-->
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Project 1 - Team Page</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Choose your team</title>
+
+    <!--Link CSS Reset-->
+    <link rel="stylesheet" type="text/css" href=".\assets\css\reset.css">
+
+    <!--Ajax Library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src=".\assets\javascript\javascript.js"></script>
+
+    <!--bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-        </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-        </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-        </script>
-
-    <!--Link CSS and Reset-->
-    <link rel="stylesheet" type="text/css" href=".\assets\css\reset.css">
-    <link rel="stylesheet" type="text/css" href=".\assets\css\styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
     <!--javascript-->
-    <script type="text/javascript" src=".\assets\javascript\javascript.js"></script>
+    <script type="text/javascript" src=".\assets\javascript\javascriptTeams.js"></script>
+
+    <!--Link CSS-->
+    <link rel="stylesheet" type="text/css" href=".\assets\css\styles.css">
+
 </head>
 
+<body class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                    <h1>Choose Your Team</h1>
+            </div>
+        </div>
+    </div>
 
+    <!--Player Deck-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading text-left">Available Characters</div>
+                        <div class="panel-body" id="deckContainer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Player hand-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading text-left">Cards in your Hand</div>
+                        <div class="panel-body" id="playerHand"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal Start-->
+    <div class="container">
+
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-lg" id="submit">Battle!</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Your need more cards</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please select a total of 5 cards</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!--Modal End-->
+
+    <!--Modal Start-->
+    <div class="container">
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal2" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">To many cards</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>You can only have 5 cards</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--Modal End-->
+</body>
 </html>
