@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1f05844e-0d37-40a2-b387-29cf84f2e9d9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/javascript/javascriptTeams.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/javascript/javascriptTeams.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/javascript/loadImg.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/javascript/loadImg.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fight.html" beforeDir="false" afterPath="$PROJECT_DIR$/fight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teampage.html" beforeDir="false" afterPath="$PROJECT_DIR$/teampage.html" afterDir="false" />
-    </list>
+    <list default="true" id="1f05844e-0d37-40a2-b387-29cf84f2e9d9" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +67,7 @@
       <workItem from="1567151312435" duration="6189000" />
       <workItem from="1567158313301" duration="4826000" />
       <workItem from="1567163323738" duration="9649000" />
-      <workItem from="1567551205814" duration="3715000" />
+      <workItem from="1567551205814" duration="4103000" />
     </task>
     <servers />
   </component>
