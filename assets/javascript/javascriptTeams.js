@@ -4,11 +4,37 @@ $(document).ready(function () {
 
     
     var digmonNamesList = ["Agumon", "Gabumon", "Biyomon", "Tentomon", "Palmon", "Gomamon", "Patamon", "Elecmon", "Gazimon", "Otamamon", "Gotsumon"];
+    var digmonNamesList1 = ["Agumon.jpg", "Gabumon.jpg", "Biyomon.jpg", "Tentomon.jpg", "Palmon.jpg", "Gomamon.jpg", "Patamon.jpg", "Elecmon.jpg", "Gazimon.jpg", "Otamamon.jpg", "Gotsumon.jpg"];
     var pokemonNamesList = ["Gyarados", "Magikarp", "Lugia", "Mew", "Mewtwo", "Gengar", "Eevee", "Jigglypuff", "Squirtle", "Charizard", "Pikachu"];
     var namesList = [];
-    namesList = $.merge($.merge([], digmonNamesList), pokemonNamesList);
+    namesList = digmonNamesList;//$.merge($.merge([], digmonNamesList), pokemonNamesList);
     var deck = [];
+    //var full = digmonNamesList.concat(pokemonNamesList);
+    var computer = Array(5);
+    var idxArray = Array(0);
+    var length = 0;
+    for (var i = 0; i < 5; i ++)
+    {
+        do {
+            var newRand = Math.floor(Math.random() * 11);
+            if (length === 0)
+                idxArray.push(newRand);
+            else {
+                var temp = 0;
+                for (var j = 0; j < 5; j++) {
+                    if (idxArray[j] === newRand)
+                        temp++;
+                }
+                if (temp === 0)
+                    idxArray.push(newRand);
+            }
+        }while(temp === 0);
+    }
 
+    for (var i = 0; i < 5; i ++)
+        computer[i] = digmonNamesList1[idxArray[i]].toLowerCase();
+
+    localStorage.setItem("compTeam", computer);
 
     function getImageDigimon(name) {
         //https://digimon-api.herokuapp.com/
@@ -89,8 +115,14 @@ $(document).ready(function () {
     });
     $("#submit").on("click", function () {
         if (deck.length === 5) {
-            localStorage.setItem("playerTeam", JSON.stringify(deck));
+
+            for (var i = 0; i < 5; i ++) {
+                deck[i] += ".jpg";
+                deck[i] = deck[i].toLowerCase();
+            }
+            localStorage.setItem("playerTeam",deck);
             location.href = "fight.html";
+
         }
         else {
             $("#myModal").modal();
