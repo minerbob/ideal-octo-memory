@@ -2,7 +2,7 @@
 
 <head>
 
-    <title>Choose your team</title>
+    <title>fight club - choose your team</title>
 
     <!--Link CSS Reset-->
     <link rel="stylesheet" type="text/css" href=".\assets\css\reset.css">
@@ -25,22 +25,33 @@
 
 </head>
 
-<body class="text-center">
-    <div class="container">
+<body >
+    <div class="jumbotron jumbotron-fluid py-0">
+        <div class="container mb-5"></div>
+        <div class="row">
+            <h1 class="display-4 float-left offset-1 col-5">fight club
+                <p class="mt-2">“i don't want to die without any scars”</p>
+            </h1>
+            <h5 class="lead float-right align-middle offset-3 col-3">welcome: *username*</h5>
+        </div>
+    </div>
+    </div>
+
+    <div class="container text-center">
         <div class="row">
             <div class="col-sm-12">
-                    <h1>Choose Your Team</h1>
+                <h1>choose your team</h1>
             </div>
         </div>
     </div>
 
     <!--Player Deck-->
-    <div class="container">
+    <div class="container text-center">
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel-group">
                     <div class="panel panel-primary">
-                        <div class="panel-heading text-left">Available Characters</div>
+                        <div class="panel-heading text-left" id="availablefighters">available fighters</div>
                         <div class="panel-body" id="deckContainer"></div>
                     </div>
                 </div>
@@ -49,12 +60,12 @@
     </div>
 
     <!--Player hand-->
-    <div class="container">
+    <div class="container text-center">
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel-group">
                     <div class="panel panel-primary">
-                        <div class="panel-heading text-left">Cards in your Hand</div>
+                        <div class="panel-heading text-left" id="teamfighters">selected fighters</div>
                         <div class="panel-body" id="playerHand"></div>
                     </div>
                 </div>
@@ -63,10 +74,10 @@
     </div>
 
     <!--Modal Start-->
-    <div class="container">
+    <div class="container text-center mb-5">
 
         <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" id="submit">Battle!</button>
+        <button type="button" class="btn btn-info btn-lg" id="submit">battle!</button>
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">
@@ -76,13 +87,13 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Your need more cards</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Please select a total of 5 cards</p>
+                        <h4 class="modal-title">not enough picks</h4>
+                        <p>your team needs to be 5 strong</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
                     </div>
                 </div>
 
@@ -93,7 +104,7 @@
     <!--Modal End-->
 
     <!--Modal Start-->
-    <div class="container">
+    <div class="container text-center">
 
         <!-- Modal -->
         <div class="modal fade" id="myModal2" role="dialog">
@@ -103,13 +114,13 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">To many cards</h4>
                     </div>
                     <div class="modal-body">
-                        <p>You can only have 5 cards</p>
+                        <h4 class="modal-title">too many picks</h4>
+                        <p>your team can only be 5 strong</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
                     </div>
                 </div>
 
@@ -118,4 +129,42 @@
     </div>
     <!--Modal End-->
 </body>
+
+<style>
+    body {
+        background: url("http://cdn.shopify.com/s/files/1/1619/4221/products/HDR2378_grande.jpg?v=1537958847") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    .jumbotron {
+        opacity: .5;
+        height: 25%;
+        padding: 5%;
+    }
+
+    h1 {
+        color: #C0C0C0;
+    }
+
+    #availablefighters {
+        background-color: #696969;
+
+    }
+
+    #teamfighters {
+        background-color: #696969;
+    }
+
+    .panel {
+        border: none;
+    }
+
+    #submit {
+        background-color: #696969;
+        border: none;
+    }
+</style>
+
 </html>

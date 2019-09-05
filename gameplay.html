@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Project 1 - Game Play</title>
+    <title>fight club - game play</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -28,28 +28,29 @@
 </head>
 
 <body>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container mb-5">
-            <h1 class="display-4 float-left">Fight Club</h1>
-            <h5 class="lead float-right align-middle">Welcome: *Username*</h5>
+    <div class="jumbotron jumbotron-fluid p-3">
+        <div class="container mb-5"></div>
+            <div class="row">
+                <h1 class="display-4 float-left offset-1 col-5">fight club
+                    <p class="mt-2">“only after disaster can we be resurrected”</p>
+                </h1>
+                <h5 class="lead float-right align-middle offset-3 col-3">welcome: *username*</h5>
+            </div>
         </div>
     </div>
 
     <div class="container">
         <div class="row">
             <div class="offset-3 col-8">
-                <h2 class="my-5 mx-auto" style="width: 500px;">Choose your gameplay</h2>
+                <h2 class="my-5 mx-auto" style="width: 500px;">choose your gameplay</h2>
                 <div class="row">
 
-                    <a href="teampage.html" type="button" class="btn btn-info p-5 mr-5 col-4 hover">Solo <span
+                    <a href="teampage.html" type="button" class="btn btn-info p-5 mr-5 col-4 hover">solo <span
                             class="hovertext">single
                             player vs cpu</span></a>
-                    <button type="button" class="btn btn-info p-5 ml-5 col-4 hover">Multiplayer <span class="hovertext">
-                            player vs player</span></button>
-
-                    <a href="teampage.html" type="button" class="btn btn-info p-5 mr-5 col-4">Solo</a>
-                    <button type="button" class="btn btn-dark p-5 ml-5 col-4">Invite other user</button>
-
+                    <button type="button" class="btn btn-info p-5 ml-5 col-4 hover disabled">multiplayer <span
+                            class="hovertext">
+                            out of order :( please check back later</span></button>
                 </div>
             </div>
         </div>
@@ -70,6 +71,10 @@
         opacity: .4;
         height: 25%;
         padding: 5%;
+    }
+
+    p {
+        font-size: 11pt;
     }
 
     .btn {
